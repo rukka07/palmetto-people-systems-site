@@ -44,12 +44,10 @@ a:hover{ opacity: 0.92; }
   padding: 36px 0 18px;
 }
 
-/* Hero wrapper */
 .hero-grid{
   display: block;
 }
 
-/* Two-column hero: copy on left, logo on right */
 .hero-copy{
   display: grid;
   grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
@@ -62,7 +60,6 @@ a:hover{ opacity: 0.92; }
   min-width: 0;
 }
 
-/* Hero logo */
 .brand-logo{
   justify-self: end;
   align-self: center;
@@ -70,12 +67,10 @@ a:hover{ opacity: 0.92; }
   max-width: 100%;
   height: auto;
   transform-origin: right center;
-
   opacity: 0.98;
   filter: drop-shadow(0 18px 48px rgba(0,0,0,0.55));
 }
 
-/* Wide desktop tune: enlarge and nudge logo right */
 @media (min-width: 1281px){
   .brand-logo{
     transform-origin: 98% center;
@@ -83,7 +78,6 @@ a:hover{ opacity: 0.92; }
   }
 }
 
-/* Desktop-to-tablet interpolation */
 @media (max-width: 1280px){
   .hero-copy{
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
@@ -141,8 +135,10 @@ a:hover{ opacity: 0.92; }
   color: var(--bg);
   border: 1px solid rgba(255,255,255,0.0);
   box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.btn:hover{ transform: translateY(-1px); }
+.btn:hover{ transform: translateY(-1px); box-shadow: 0 12px 36px rgba(0,0,0,0.55); }
 .btn:active{ transform: translateY(0px); }
 
 .btn-ghost{
@@ -237,24 +233,105 @@ a:hover{ opacity: 0.92; }
   padding: 18px;
 }
 
-/* Boundary */
-.boundary{
-  margin-top: 18px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+/* Fit section image */
+.fit-image{
+  width: 100%;
   border-radius: var(--radius);
-  padding: 18px;
+  margin-top: 18px;
+  object-fit: cover;
+  max-height: 400px;
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
-.boundary h3{
-  margin: 0 0 8px;
+/* -------------------------------------------------
+   PRICING
+-------------------------------------------------- */
+.pricing-cards{
+  gap: 16px;
+}
+
+.pricing-card{
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.pricing-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(48,144,160,0.3);
+}
+
+.pricing-featured{
+  border-color: rgba(48,144,160,0.4);
+  background: rgba(48,144,160,0.08);
+  position: relative;
+}
+
+.pricing-featured::before{
+  content: "Most common";
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, var(--sea), var(--teal));
+  color: var(--bg);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.pricing-label{
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sea);
+  margin-bottom: 8px;
+}
+
+.pricing-range{
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.pricing-unit{
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.pricing-fit{
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.pricing-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
   font-size: 14px;
-  letter-spacing: 0.01em;
-  color: rgba(240,240,240,0.85);
+  color: rgba(240,240,240,0.80);
 }
 
-.boundary p{ margin: 0 0 10px; font-size: 13px; }
-.boundary ul{ margin: 0; padding-left: 18px; font-size: 13px; }
+.pricing-list li{
+  padding: 5px 0;
+  padding-left: 18px;
+  position: relative;
+}
+
+.pricing-list li::before{
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--sea);
+  font-weight: 700;
+}
 
 /* Form */
 .form{
@@ -279,6 +356,8 @@ input{
   background: rgba(0,0,0,0.18);
   color: var(--text);
   outline: none;
+  font-family: inherit;
+  font-size: 14px;
 }
 
 input:focus{
@@ -326,28 +405,18 @@ input:focus{
 
 .footer-cta{ margin-top: 14px; }
 
-/* Image placeholders used later in page */
-.img-placeholder{
-  width: 100%;
-  min-height: 240px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.03);
-  display: grid;
-  place-items: center;
-  color: rgba(240,240,240,0.70);
-  padding: 16px;
-  text-align: center;
+.footer a{
+  color: var(--sea);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.img-placeholder.wide{
-  min-height: 200px;
-  margin-top: 16px;
+.footer a:hover{
+  opacity: 0.85;
 }
 
 /* Mobile stack */
 @media (max-width: 900px){
-  /* Single column hero: logo above copy */
   .hero-copy{
     display: grid;
     grid-template-columns: 1fr;
