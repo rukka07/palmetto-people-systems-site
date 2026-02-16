@@ -112,7 +112,8 @@ a:hover{ opacity: 0.92; }
   margin: 14px 0 0;
   font-size: 16px;
   color: rgba(240,240,240,0.80);
-  max-width: 72ch;
+  max-width: 64ch;
+  text-wrap: pretty;
 }
 
 /* Buttons */
@@ -178,12 +179,14 @@ a:hover{ opacity: 0.92; }
   font-size: 28px;
   margin: 0 0 10px;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .section-head p{
   color: rgba(240,240,240,0.80);
-  max-width: 75ch;
+  max-width: 72ch;
   margin: 0 0 22px;
+  text-wrap: pretty;
 }
 
 /* Cards */
@@ -292,23 +295,11 @@ a:hover{ opacity: 0.92; }
   margin-bottom: 8px;
 }
 
-.pricing-range{
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-}
-
-.pricing-unit{
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--muted);
-}
-
 .pricing-fit{
-  font-size: 13px;
-  color: var(--muted);
+  font-size: 14px;
+  color: rgba(240,240,240,0.80);
   margin: 0 0 14px;
+  line-height: 1.4;
 }
 
 .pricing-list{
