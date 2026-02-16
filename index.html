@@ -279,8 +279,8 @@
 
         <!-- Web3Forms: free tier, 250 submissions/mo, delivers to your email -->
         <form id="leadForm" class="form" action="https://api.web3forms.com/submit" method="POST">
-          <!-- Replace YOUR_ACCESS_KEY with your Web3Forms access key -->
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+          <!-- Replace YOUR_ACCESS_KEY with your real Web3Forms UUID access key -->
+          <input type="hidden" name="access_key" value="846b39f9-ed20-4c24-8d03-b218e06ad43e" />
           <input type="hidden" name="subject" value="New Lead — Palmetto People Systems" />
           <input type="hidden" name="from_name" value="PPS Website" />
           <!-- Honeypot spam protection -->
@@ -334,10 +334,20 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    const form = document.getElementById("leadForm");
+    const accessKeyField = form.querySelector('input[name="access_key"]');
+
+    // Prevent sending placeholder keys to Web3Forms.
+    form.addEventListener("submit", (event) => {
+      const key = (accessKeyField?.value || "").trim();
+      if (!key || key === "YOUR_ACCESS_KEY") {
+        event.preventDefault();
+        alert("Form is not configured yet. Replace YOUR_ACCESS_KEY in index.html with your Web3Forms access key.");
+      }
+    });
 
     // Show thank-you message if redirected after form submission
     if (new URLSearchParams(window.location.search).get("submitted") === "true") {
-      const form = document.getElementById("leadForm");
       const msg = document.createElement("div");
       msg.className = "thankyou";
       msg.innerHTML = "<strong>Thank you!</strong><span>We'll be in touch within one business day.</span>";
