@@ -184,9 +184,13 @@ a:hover{ opacity: 0.92; }
 
 .section-head p{
   color: rgba(240,240,240,0.80);
-  max-width: 72ch;
+  max-width: 100ch;
   margin: 0 0 22px;
-  text-wrap: pretty;
+  text-wrap: normal;
+}
+
+#what .section-head p{
+  max-width: none;
 }
 
 /* Cards */
